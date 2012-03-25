@@ -1,0 +1,49 @@
+[user]
+	name = Markus Ulrich
+	email = $GIT_AUTHOR_EMAIL
+[core]
+excludesfile = ~/.gitignore
+autocrlf = input
+editor = /usr/bin/vim
+[color]
+ui = auto
+[color "branch"]
+current = red
+remote = green
+[color "diff"]
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+[color "status"]
+added = yellow
+changed = green
+untracked = cyan
+[alias]
+st = status
+ci = commit
+co = checkout
+br = branch
+cp = cherry-pick
+cps = cherry-pick -s
+slog = log --pretty=oneline --abbrev-commit
+glog = log --graph --decorate --pretty=oneline --abbrev-commit
+gloga = log --graph --decorate --pretty=oneline --abbrev-commit --all
+unci = reset HEAD^
+uncommit = reset HEAD^
+ls = ls-files
+out = log HEAD..origin
+killbranches = !git branch | grep -v master | xargs git branch -d 2> /dev/null
+[instaweb]
+httpd=webrick
+[push]
+default=current
+[cola]
+	fontdiff = Terminus,9,-1,5,50,0,0,0,0,0
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 1916x1041+0+18
+	history-view-vpane-position = 865
+	file-view-vpane-position = 602
+	file-view-hpane-position = 325
+	main-window-view = FileView

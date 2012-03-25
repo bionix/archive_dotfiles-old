@@ -1,0 +1,3 @@
+map !f !Gperl -MText::Autoformat -e'autoformat' <RETURN>
+set expandtab
+set tabstop=2

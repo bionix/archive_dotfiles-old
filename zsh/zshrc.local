@@ -1,0 +1,77 @@
+### Set ZSH_CUSTOM to the path where your custom config files
+### and plugins exists, or else we will use the default custom/
+##if [[ -z "$ZSH_CUSTOM" ]]; then
+##    ZSH_CUSTOM="$ZSH/custom"
+##fi
+##
+##
+##is_plugin() {
+##  local base_dir=$1
+##  local name=$2
+##  test -f $base_dir/plugins/$name/$name.plugin.zsh \
+##    || test -f $base_dir/plugins/$name/_$name
+##}
+### Add all defined plugins to fpath. This must be done
+### before running compinit.
+##for plugin ($plugins); do
+##  if is_plugin $ZSH_CUSTOM $plugin; then
+##    fpath=($ZSH_CUSTOM/plugins/$plugin $fpath)
+##  elif is_plugin $ZSH $plugin; then
+##    fpath=($ZSH/plugins/$plugin $fpath)
+##  fi
+##done
+##
+### Load and run compinit
+##autoload -U compinit
+##compinit -i
+
+ZSH_CUSTOM="~/.zsh"
+ZSH="~/.zsh"
+
+plugins="ssh-agent"
+
+# Load all of the plugins that were defined in ~/.zshrc
+for plugin ($plugins); do
+  if [ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
+  elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+  fi
+done
+
+
+
+zstyle ':chpwd:profiles:/git_repos_work(|/|/*)'       profile work
+zstyle ':chpwd:profiles:/git_repos_privat(|/|/*)'     profile privat
+
+# configuration for profile 'work':
+chpwd_profile_work()
+{
+  [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
+  print "chpwd(): Switching to profile: $profile"
+
+  export DEBEMAIL=EMAIL@WORK.de
+  export GIT_AUTHOR_EMAIL="EMAIL@WORK.de"
+  export GIT_COMMITTER_EMAIL="EMAIL@WORK.de"
+}
+
+# configuration for profile 'privat':
+chpwd_profile_privat()
+{
+  [[ ${profile} == ${CHPWD_PROFILE} ]] && return 1
+  print "chpwd(): Switching to profile: $profile"
+
+  export DEBEMAIL=EMAIL@HOME.de
+  export GIT_AUTHOR_EMAIL="EMAIL@HOME.de"
+  export GIT_COMMITTER_EMAIL="EMAIL@HOME.de"
+}
+
+
+
+PATH="/opt/local/bin:/opt/local/sbin:/opt/vagrant/:/opt/vagrant/bin/:$PATH"
+alias refresh-puppet="ssh puppet.SERVER.de sudo /etc/puppet/refre.sh"
+alias rpg='cd ~/git_repositories/puppet/ && git pull origin master && git submodule init && git submodule update'
+alias i3lock="i3lock -i ~/.i3/i3lock.png -c 000000"
+alias OPENVPNWORK="sudo openvpn --config /etc/openvpn/VERBINDUNG.ovpn --script-security 3 --daemon"
+alias KILLOPENVPN="sudo killall openvpn"
+alias APTSYSTEM="sudo apt-get clean && sudo apt-get update && sudo apt-get -u dist-upgrade && sudo apt-get clean"
