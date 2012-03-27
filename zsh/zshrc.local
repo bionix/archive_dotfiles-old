@@ -75,3 +75,18 @@ alias i3lock="i3lock -i ~/.i3/i3lock.png -c 000000"
 alias OPENVPNWORK="sudo openvpn --config /etc/openvpn/VERBINDUNG.ovpn --script-security 3 --daemon"
 alias KILLOPENVPN="sudo killall openvpn"
 alias APTSYSTEM="sudo apt-get clean && sudo apt-get update && sudo apt-get -u dist-upgrade && sudo apt-get clean"
+alias DUALSCREENWORK="~/bin/dualscreen_work.sh"
+
+
+
+# Press 'v' to edit the command line in vim.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+# NO BEEPING!
+setopt no_BEEP
+
+# Leave processes open when closing a shell with background processes
+setopt no_HUP
+
