@@ -156,7 +156,5 @@ bar {
 
 bindsym $mod+Shift+x exec i3lock -i ~/.i3/i3lock.png -c 000000
 
-## Background wallpaper
-exec nitrogen --restore
-exec ssh-add
-#exec ssh-askpass
+exec xsetroot -solid "#000000"
+exec ( ssh-add /PATH/KEY1 && ssh-add /PATH/KEY2 && ssh-add /PATH/KEY3 )
