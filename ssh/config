@@ -1,0 +1,5 @@
+host *
+controlmaster auto
+controlpath /tmp/ssh-%r@%h:%p
+
+HashKnownHosts no
