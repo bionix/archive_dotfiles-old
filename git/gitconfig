@@ -1,6 +1,6 @@
 [user]
-	name = Markus Ulrich
-	email = $GIT_AUTHOR_EMAIL
+name = Markus Ulrich
+email = $GIT_AUTHOR_EMAIL
 [core]
 excludesfile = ~/.gitignore
 autocrlf = input
@@ -34,16 +34,20 @@ uncommit = reset HEAD^
 ls = ls-files
 out = log HEAD..origin
 killbranches = !git branch | grep -v master | xargs git branch -d 2> /dev/null
+nm = branch --no-merged
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+lga = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
 [instaweb]
 httpd=webrick
 [push]
 default=current
+#default=matching
 [cola]
-	fontdiff = Terminus,9,-1,5,50,0,0,0,0,0
+fontdiff = Terminus,9,-1,5,50,0,0,0,0,0
 [giggle]
-	main-window-maximized = false
-	main-window-geometry = 1916x1041+0+18
-	history-view-vpane-position = 865
-	file-view-vpane-position = 602
-	file-view-hpane-position = 325
-	main-window-view = FileView
+main-window-maximized = false
+main-window-geometry = 1916x1041+0+18
+history-view-vpane-position = 865
+file-view-vpane-position = 602
+file-view-hpane-position = 325
+main-window-view = FileView
